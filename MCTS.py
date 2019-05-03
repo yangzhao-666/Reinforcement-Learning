@@ -47,12 +47,10 @@ class TreeNode():
         valids_moves_size = len(valids_moves)
         for i, move in enumerate(valids_moves):
             tmp_board = self.board
-            #print("Expand: move: ", move)
             tmp_board, _ = self.game.getNextState(tmp_board, self.curPlayer, int(move))
             child = TreeNode(tmp_board, self.game)
             child.parent = self
             child.curPlayer = -self.curPlayer
-            #print("Expand:self.player: ", self.curPlayer, " child.curPlayer: ", child.curPlayer)
             child.action = move
             self.children.append(child)
 
@@ -105,16 +103,11 @@ class TreeNode():
                 valids = self.game.getValidMoves(tmp_board, tmp_player)
                 while valids[a] != 1:
                     a = np.random.randint(self.game.getActionSize())
-                #print("RollOut:a ", a)
-                #print("RollOut:a", type(a))
                 tmp_board, tmp_player = self.game.getNextState(tmp_board, tmp_player, int(a))
-                #print("RollOut:tmp_player ", tmp_player)
-                #print("RollOut:tmp_board:\n", tmp_board)
             if(tmp_player == -1):
                 winner = 1
             else:
                 winner = -1
-        #print("RollOut: winner", winner)
         return winner
 
     def BestAction(self):
