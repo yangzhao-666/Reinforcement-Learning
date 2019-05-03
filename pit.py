@@ -28,3 +28,7 @@ qlp = Qlearning(g, 100, 0.01, 0.9, 0.9).play
 
 arena_rp_op = Arena.Arena(mcsp, rp, g, display=display)
 print(arena_rp_op.playGames(10, verbose=False))
+arena_rp_op = Arena.Arena(mctsp, rp, g, display=display)
+print(arena_rp_op.playGames(10, verbose=False))
+arena_rp_op = Arena.Arena(qlp, rp, g, display=display)
+print(arena_rp_op.playGames(10, verbose=False))
